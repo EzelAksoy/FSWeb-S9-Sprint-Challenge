@@ -45,28 +45,29 @@ export default function AppFunctional(props) {
       if (data.index % 3 !== 0) {
         nextIndeks = data.index - 1;
       } else {
-        setData({ ...data, message: "Sola Gidemezsiniz!" });
+        setData({ ...data, message: "Sola gidemezsiniz" });
       }
     }
     if (yon === "up") {
       if (data.index / 3 >= 1) {
         nextIndeks = data.index - 3;
       } else {
-        setData({ ...data, message: "Yukarıya Gidemezsiniz!" });
+        setData({ ...data, message: "Yukarıya gidemezsiniz" });
       }
     }
+
     if (yon === "right") {
       if (data.index % 3 < 2) {
         nextIndeks = data.index + 1;
       } else {
-        setData({ ...data, message: "Sağa Gidemezsiniz!" });
+        setData({ ...data, message: "Sağa gidemezsiniz" });
       }
     }
     if (yon === "down") {
       if (data.index / 3 < 2) {
         nextIndeks = data.index + 3;
       } else {
-        setData({ ...data, message: "Aşağıya Gidemezsiniz!" });
+        setData({ ...data, message: "Aşağıya gidemezsiniz" });
       }
     }
     return nextIndeks;
@@ -101,7 +102,7 @@ export default function AppFunctional(props) {
       email: data.email,
     };
     if (data.email === "") {
-      setData({ ...data, ["message"]: "Geçerli bir e-mail girin lütfen!" });
+      setData({ ...data, ["message"]: "Ouch: email is required" });
     } else {
       axios
         .post("http://localhost:9000/api/result", sentIt)
@@ -162,6 +163,7 @@ export default function AppFunctional(props) {
           placeholder="email girin"
           onChange={onChange}
           value={data.email}
+          data-testid="mail-input"
         ></input>
         <input id="submit" type="submit"></input>
       </form>
